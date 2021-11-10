@@ -34,6 +34,16 @@ export class EmployeeService {
     );
   }
 
+  updateUserData(employee: Employee, data: any): Observable<any>{
+    return this.httpClient.put(this.rootServerUrl+"update/"+employee._id, data).pipe(
+      catchError(this.handelError)
+    );
+  }
+
+  deleteUser(employeeId: string): Observable<any>{
+    return this.httpClient.delete(this.rootServerUrl+"remove/"+employeeId);
+  }
+
 
 
   handelError(error: HttpErrorResponse){

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
 
 @Component({
@@ -11,8 +11,8 @@ export class LoginComponent implements OnInit {
 
   serverError: string = "";
   login = new FormGroup({
-    email: new FormControl(""),
-    password: new FormControl("")
+    email: new FormControl("", [Validators.required, Validators.email]),
+    password: new FormControl("", [Validators.required])
   });
 
   constructor(private employeeService: EmployeeService) { }

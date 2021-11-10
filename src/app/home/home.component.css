@@ -1,0 +1,14 @@
+.home_root_div {
+  margin-top: 80px;
+}
+
+.table_div {
+  width: 100%;
+}
+
+.error_label {
+  margin-top: 7px;
+  font-weight: 600;
+  color: red;
+  margin-left: 3px;
+}

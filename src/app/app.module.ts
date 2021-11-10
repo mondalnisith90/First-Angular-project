@@ -16,6 +16,9 @@ import { ErrorComponent } from './error/error.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { EmployeeCardComponent } from './employee-card/employee-card.component'
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { EmployeeCardComponent } from './employee-card/employee-card.component'
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTabsModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

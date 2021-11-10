@@ -6,13 +6,18 @@
         <form [formGroup]="login" (ngSubmit)="loginFormSubmit()" >
           <div class="mb-3">
             <label for="exampleInputEmail" class="form-label">Email address*</label>
-            <input type="email" class="form-control" placeholder="Enter email address" formControlName="email" id="exampleInputEmail" aria-describedby="emailHelp">
+            <input type="email" class="form-control"  placeholder="Enter email address" formControlName="email" id="exampleInputEmail" aria-describedby="emailHelp">
+            <div *ngIf="login.controls.email.touched">
+              <label style="font-weight: bold; color: red; margin-top: 5px;" *ngIf="login.controls.email.errors?.required" >This feild is required</label>
+              <label style="font-weight: bold; color: red; margin-top: 5px;" *ngIf="login.controls.email.errors?.email">Please enter a valid email address</label>
+            </div>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword" class="form-label">Password*</label>
             <input type="password" class="form-control" placeholder="Enter password" formControlName="password" id="exampleInputPassword" aria-describedby="emailHelp">
+            <label style="font-weight: bold; color: red; margin-top: 5px;" *ngIf="login.controls.password.errors?.required && login.controls.password.touched" >This feild is required</label>
           </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" [disabled]="login.invalid" class="btn btn-primary">Login</button>
           </form>
     </div>
 </div>

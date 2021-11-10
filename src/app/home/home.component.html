@@ -1,10 +1,85 @@
 
-<div style="margin-top: 80px;">
-    <div class="row container text-center  w-100">
-        <div class="col-md-3" *ngFor="let employee of employeesData">
-            <app-employee-card [employee]="employee" ></app-employee-card>
-        </div>
+<div class="home_root_div" >
+    <div class="container table_div ">
+        <table class="table table-hover table-striped text-center  ">
+            <thead >
+                <tr class="bg-dark text-white">
+                <th>Employee Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone No.</th>
+                <th>Email</th>
+                <th colspan="2" >Update Employee</th>
+               </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employeesData" >
+                  <td>{{employee._id}}</td>
+                  <td>{{employee.firstName}}</td>
+                  <td>{{employee.lastName}}</td>
+                  <td>{{employee.phone}}</td>
+                  <td>{{employee.email}}</td>
+                  <td>
+                    <div>
+                      <button mat-raised-button color="primary" (click)="editButtonClick(employee)" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 85px;" ><mat-icon class="me-1" style="font-size: 20px;" >edit</mat-icon>Edit</button>
+                      <!-- <button class="btn btn-danger ms-2 btn-sm" (click)="deleteButtonClick(employee)" >Delete</button> -->
+                      <button class="ms-4" (click)="deleteButtonClick(employee)" mat-raised-button color="warn"  style="width: 100px;" ><mat-icon class="me-1" style="font-size: 20px;"  >delete</mat-icon>Delete</button>
+                  </div>
+                </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-</div>
+    <!-- <mat-tab-group>
+      <mat-tab label="First"> <h1>Hello all</h1></mat-tab>
+      <mat-tab label="Second"> <h1>Hi all</h1> </mat-tab>
+      <mat-tab label="Third"><h1>By all</h1>  </mat-tab>
+    </mat-tab-group> -->
+    <mat-icon color="accent">add_shopping_cart</mat-icon>
 
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Update User</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form #employeeForm="ngForm" (ngSubmit)="saveChanges(employee, employeeForm.value)">
+                <div class="mb-3">
+                    <label for="exampleInputFirstName" class="form-label" >First Name*</label>
+                    <input type="text" class="form-control" id="exampleInputFirstName" minlength="3" #firstName="ngModel" required  name="firstName" [(ngModel)]="employeeFormData.firstName" placeholder="Enter first name" aria-describedby="emailHelp">
+                    <div *ngIf="firstName.touched" >
+                      <label class="error_label" *ngIf="firstName.invalid" >This field is required</label>
+                      <label class="error_label" *ngIf="firstName.errors?.minlength" >Name field min length must be of 3 characters</label>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputLastName" class="form-label">Last Name*</label>
+                    <input type="text" class="form-control" id="exampleInputLastName" #lastName="ngModel" required name="lastName"  [(ngModel)]="employeeFormData.lastName" placeholder="Enter last name" aria-describedby="emailHelp">
+                    <div *ngIf="lastName.touched" >
+                      <label class="error_label" *ngIf="lastName.invalid" >This field is required</label>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPhoneNumber" class="form-label">Phone Number*</label>
+                    <input type="number" class="form-control" pattern="^((\\+91-?)|0)?[0-9]{10}$" required id="exampleInputPhoneNumber" #phoneNumber="ngModel" name="phone" [(ngModel)]="employeeFormData.phone" placeholder="Enter phone number" aria-describedby="emailHelp">
+                    <div *ngIf="phoneNumber.touched" >
+                      <label class="error_label" *ngIf="phoneNumber.invalid" >This field is required</label>
+                      <label class="error_label" *ngIf="phoneNumber.errors?.pattern" >Phone number must be length of 10 digits</label>
+                    </div>
+                  </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Dismiss</button>
+                    <button type="submit" [disabled]="employeeForm.invalid" class="btn btn-primary">Save Changes</button>
+                  </div>
+              </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
