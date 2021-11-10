@@ -1,0 +1,25 @@
+.signup_root_div {
+  margin-top: 50px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.signup_main_div {
+  width: 600px;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #d9dbda;
+}
+
+.form-label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.error_label {
+  margin-top: 7px;
+  font-weight: 600;
+  color: red;
+  margin-left: 3px;
+  /* visibility: hidden; */
+}

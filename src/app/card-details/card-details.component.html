@@ -1,0 +1,12 @@
+<div *ngIf="isNotEmpty()">
+   <div class="card">
+       <div class="card-head">
+           <img [src]="selectedUser.url" class="img-fluid w-100"  style="height: 200px;" />
+       </div>
+       <div class="card-body">
+           <h1>Id: {{selectedUser.id}}</h1>
+           <h3>AlbumId: {{selectedUser.albumId}}</h3>
+           <p>Title: {{selectedUser.title}}</p>
+       </div>
+   </div> 
+</div>

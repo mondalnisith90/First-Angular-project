@@ -1,0 +1,25 @@
+   
+    <table class="table table-hover table-striped text-center">
+     <thead class="bg-dark text-white">
+      <tr>
+      <th>Id</th>
+      <th>AlbumId</th>
+      <th>Title</th>
+      <th>Image</th>
+     </tr>
+     </thead>
+     <tbody> 
+        <tr *ngFor="let user of users" style="cursor: pointer;" (click)="userRowClick(user)" >
+           <td>{{user.id}}</td>
+           <td>{{user.albumId}}</td>
+           <td>{{user.title}}</td>
+           <td><img [src]="user.thumbnailUrl" alt="user_img" class="img-fluid" width="50px" height="50px" /></td> 
+        </tr>
+     </tbody>
+    </table>
+
+
+
+
+
+

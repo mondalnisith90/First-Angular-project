@@ -1,0 +1,49 @@
+<div class="signup_root_div d-flex justify-content-center align-items-center  ">
+    <div class="signup_main_div shadow">
+        <h1 style="font-size: 30px; padding: 15px; color: #ee00aa; text-align: center;">Registration Form</h1>
+        <p style="color: red;">{{serverError}}</p>
+        <hr>
+        <form [formGroup]="signup" (ngSubmit)="signupFormSubmit()" >
+          <div class="mb-3">
+            <label for="exampleInputfirstName" class="form-label">First Name*</label>
+            <input type="text" class="form-control" id="exampleInputfirstName" formControlName="firstName" aria-describedby="emailHelp">
+            <div *ngIf="signup.controls.firstName.touched" >
+              <label class="error_label" *ngIf="signup.controls.firstName.errors?.required" >This field is required</label>
+              <label class="error_label" *ngIf="signup.controls.firstName.errors?.minlength" >Name field min length must be of 3 characters</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputLastName" class="form-label">Last Name*</label>
+            <input type="text" class="form-control" id="exampleInputLastName" formControlName="lastName" aria-describedby="emailHelp">
+            <div *ngIf="signup.controls.lastName.touched" >
+              <label class="error_label" *ngIf="signup.controls.lastName.errors?.required" >This field is required</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPhoneNumber" class="form-label">Phone Number*</label>
+            <input type="number" class="form-control" formControlName="phone" id="exampleInputPhoneNumber">
+            <div *ngIf="signup.controls.phone.touched" >
+              <label class="error_label" *ngIf="signup.controls.phone.errors?.required" >This field is required</label>
+              <label class="error_label" *ngIf="signup.controls.phone.errors?.pattern" >Phone number must be length of 10 digits.</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail" class="form-label">Email address*</label>
+            <input type="email" class="form-control" formControlName="email" id="exampleInputEmail" aria-describedby="emailHelp">
+            <div *ngIf="signup.controls.email.touched" >
+              <label class="error_label" *ngIf="signup.controls.email.errors?.required" >This field is required</label>
+              <label class="error_label" *ngIf="signup.controls.email.errors?.email" >This email address is not valid.</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword" class="form-label">Password*</label>
+            <input type="password" class="form-control" formControlName="password" id="exampleInputPassword" aria-describedby="emailHelp">
+            <div *ngIf="signup.controls.password.touched">
+              <label class="error_label" *ngIf="signup.controls.password.errors?.required" >This field is required</label>
+              <label class="error_label" *ngIf="signup.controls.password.errors?.minlength" >Password min length must be of 6 characters</label>
+            </div>
+          </div>
+          <button type="submit" [disabled]="signup.invalid" class="btn btn-primary">Signup</button>
+          </form>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="login_root_div d-flex justify-content-center align-items-center  ">
+    <div class="login_main_div shadow">
+        <h1 style="font-size: 30px; padding: 15px; color: #ee00aa; text-align: center;">Login Form</h1>
+        <p style="color: red;">{{serverError}}</p>
+        <hr>
+        <form [formGroup]="login" (ngSubmit)="loginFormSubmit()" >
+          <div class="mb-3">
+            <label for="exampleInputEmail" class="form-label">Email address*</label>
+            <input type="email" class="form-control" placeholder="Enter email address" formControlName="email" id="exampleInputEmail" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword" class="form-label">Password*</label>
+            <input type="password" class="form-control" placeholder="Enter password" formControlName="password" id="exampleInputPassword" aria-describedby="emailHelp">
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+    </div>
+</div>

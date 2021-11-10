@@ -1,0 +1,30 @@
+<h2 class="text-danger">Card Items</h2>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A voluptate iste aperiam maxime ex vitae dicta atque facilis est soluta, ut voluptates illum ea magni deserunt ratione vel corrupti. Labore aliquam praesentium blanditiis enim qui earum corrupti totam? Expedita ex, harum id hic sit qui corrupti culpa quidem, provident repudiandae quam, distinctio adipisci et ad cupiditate ullam cumque! Quis officiis recusandae, eum in repudiandae soluta maxime, explicabo consequatur eius quas, veritatis sapiente? Quae laborum aut nemo officia iste similique nostrum perspiciatis laudantium tempore eligendi quibusdam fugit, quo quis, non enim doloremque, blanditiis nihil doloribus. Deserunt, quo. Illum voluptatum exercitationem quaerat.</p>
+
+<table class="table table-hover text-center  mt-5">
+    <thead class="bg-dark text-white">
+        <tr>
+         <th>Serial No.</th>
+         <th>Image</th>
+         <th>Name</th>
+         <th>Price</th>
+         <th>Quantity</th>
+         <th>Total Price</th>
+        </tr>
+    </thead>
+    <tbody class="bg-white">
+        <tr *ngFor="let watch of watchs" (click)="viewDetails(watch)" style="cursor: pointer;" >
+            <td>{{watch.id}}</td>
+            <td><img [src]="watch.image" width="35px" height="35px" alt="image" class="img-fluid" /></td>
+            <td>{{watch.name}}</td>
+            <td>{{watch.price}}</td>
+            <td> <span class="h5" style="cursor: pointer;" (click)="decrementQuentity(watch.id)" >-</span> {{watch.quantity}} <span class="h5" style="cursor: pointer;" (click)="incrementQuentity(watch.id)" >+</span></td>
+            <td>{{watch.price*watch.quantity}}</td>
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+            <td >Total Items: {{totalItems}}</td>
+            <td>Total: {{getTotalPrice()}}</td>
+        </tr>
+    </tbody>
+</table>
